@@ -20,13 +20,14 @@ jobs:
       - name: Install dependencies 📕
         run: |
           sudo apt install jupyter jupyter-nbconvert
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # python -m pip install --upgrade pip
+          # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           mkdir build
-          jupyter nbconvert --execute YOUR_NOTEBOOK.ipynb --to=html --output=build/index.html  # change the name to your notebook
+          jupyter nbconvert YOUR_NOTEBOOK.ipynb --to=html --output=build/index.html  # change the name to your notebook
+          # jupyter nbconvert --execute YOUR_NOTEBOOK.ipynb --to=html --output=build/index.html  # use this if your notebook should be executed by the GitHub action
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
